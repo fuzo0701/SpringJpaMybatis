@@ -1,0 +1,26 @@
+# compose 파일 버전
+version: '3.7'
+
+services:
+  #서비스 명
+  mariadb:
+    image: mariadb
+    #컨테이너명 설정
+    container_name: mariadb
+    #접근포트설정 (컨테이너 외부: 컨테이너 내부)
+    ports:
+      - 3306:3306
+    #컨테이너 실행시 재시작
+    restart: always
+
+    volumes:
+      - mariadb_datas:/var/lib/mysql
+
+    #환경변수설정  
+    environment:
+      # PostgreSQL 계정 및 패스워드설정 옵션
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: "!@qwe"
+    
+volumes:
+  mariadb_datas:

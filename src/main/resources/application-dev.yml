@@ -1,0 +1,28 @@
+server:
+  port: 8080
+spring:
+    datasource:
+            url: jdbc:mariadb://127.0.0.1:3306/testdb
+            driver-class-name: org.mariadb.jdbc.Driver
+            username: matthew
+            password: ENC(RO88uX+u8/WvMT+z96tplA==)
+    jpa:
+        database-platform: org.hibernate.dialect.MariaDBDialect
+        properties:
+            hibernate: 
+                show-sql: true
+                format-sql: true
+        hibernate:
+            ddl-auto: create-drop
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/h2/**/**.xml
+  type-handlers-package: com.oppo.demo.mapper.typehandler
+  type-aliases-package: com.oppo.demo.model
+  configuration:
+    map-underscore-to-camel-case: true
+    default-statement-timeout: 30
+    default-fetch-size: 100
+logging:
+  level:
+    root: INFO
+    '[com.oppo.demo.mapper]': TRACE

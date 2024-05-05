@@ -1,0 +1,27 @@
+# compose 파일 버전
+version: '1'
+
+services:
+  #서비스 명
+
+  postgresql:
+    image: postgres
+    #컨테이너명 설정
+    container_name: postgresdb
+    #접근포트설정 (컨테이너 외부: 컨테이너 내부)
+    ports:
+      - 5432:5432
+    #컨테이너 실행시 재시작
+    restart: always
+
+    volumes:
+      - postgre_datas:/var/lib/postgresql/data
+
+    #환경변수설정  
+    environment:
+      # PostgreSQL 계정 및 패스워드설정 옵션
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: "!@qwe"
+    
+volumes:
+  postgre_datas:
